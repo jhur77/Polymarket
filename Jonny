@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Will Polymarket Hire Jonny?</title>
+<style>
+  body {font-family: Arial, sans-serif; text-align: center; margin-top: 50px;}
+  .btn {font-size: 20px; padding: 10px 30px; margin: 20px; cursor: pointer;}
+  .yes {background-color: #4caf50; color: white;}
+  .no {background-color: #f44336; color: white;}
+</style>
+</head>
+<body>
+  <h1>Will Polymarket Hire Jonny?</h1>
+  <button class="btn yes" onclick="vote('yes')">Yes</button>
+  <button class="btn no" onclick="vote('no')">No</button>
+  <h2 id="result"></h2>
+
+<script>
+let votes = { yes: 0, no: 0 };
+
+function vote(choice) {
+  votes[choice]++;
+  showResults();
+}
+
+function showResults() {
+  const total = votes.yes + votes.no;
+  if (total === 0) {
+    document.getElementById('result').textContent = 'No votes yet';
+    return;
+  }
+  const yesPercent = ((votes.yes / total) * 100).toFixed(1);
+  const noPercent = ((votes.no / total) * 100).toFixed(1);
+  document.getElementById('result').textContent = `Yes: ${yesPercent}% | No: ${noPercent}% (Total votes: ${total})`;
+}
+showResults();
+</script>
+</body>
+</html>
