@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Will Polymarket Hire Jonny?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #10152b;
+      font-family: 'Inter', Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      background: #181e36;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      padding: 40px 32px;
+      max-width: 400px;
+      margin-top: 80px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #39a1ff;
+      letter-spacing: 0.5px;
+    }
+    .bet-label {
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      color: #dbeafe;
+      font-weight: 500;
+    }
+    .vote-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .vote-btn {
+      flex: 1;
+      padding: 13px 0;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.09s;
+    }
+    .vote-btn.yes {
+      background: linear-gradient(90deg,#39e167,#39a1ff);
+      color: #fff;
+      box-shadow: 0 2px 8px 0 rgba(57,225,103,.18);
+    }
+    .vote-btn.no {
+      background: linear-gradient(90deg,#ff7d7d,#fd495e);
+      color: #fff;
+      box-shadow: 0 2px 8px 0 rgba(253,73,94,.18);
+    }
+    .vote-btn:active {
+      transform: scale(0.97);
+    }
+    .result {
+      font-size: 1.09rem;
+      margin-top: 10px;
+      color: #b7e3ff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .footer {
+      margin-top: 50px;
+      color: #7182ad;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Polymarket</h1>
+    <div class="bet-label">Will Polymarket Hire Jonny?</div>
+    <div class="vote-buttons">
+      <button class="vote-btn yes" onclick="vote('yes')">Yes</button>
+      <button class="vote-btn no" onclick="vote('no')">No</button>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+  <div class="footer">
+    Not real Polymarket. Demo for voting only.
+  </div>
+
+  <script>
+    let votes = { yes: 0, no: 0 };
+
+    function vote(choice) {
+      votes[choice]++;
+      showResults();
+    }
+
+    function showResults() {
+      const total = votes.yes + votes.no;
+      if (total === 0) {
+        document.getElementById('result').textContent = 'No votes yet. Be the first to vote!';
+        return;
+      }
+      const yesPercent = ((votes.yes / total) * 100).toFixed(1);
+      const noPercent = ((votes.no / total) * 100).toFixed(1);
+      document.getElementById('result').textContent =
+        `Yes: ${yesPercent}% (${votes.yes}) | No: ${noPercent}% (${votes.no}) — Total votes: ${total}`;
+    }
+    showResults();
+  </script>
+</body>
+</html>
